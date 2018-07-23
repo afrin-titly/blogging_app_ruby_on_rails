@@ -1,0 +1,2 @@
+class BloggerLogin < ApplicationRecord
+end

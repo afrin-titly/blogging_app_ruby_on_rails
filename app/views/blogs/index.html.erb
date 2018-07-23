@@ -1,0 +1,7 @@
+<%provide(:title, "All blogs") %>
+<% @blogs.each do |blog| %>
+     <ul>
+         <h4><li><%= link_to("#{blog.title}", blog_path(blog) ) %></li></h4>
+     </ul>
+    <% end %>
+    
