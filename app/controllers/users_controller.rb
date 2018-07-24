@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
   
+  def index
+    @users = User.all
+  end
+
   def show
   	@user = User.find(params[:id])
+    # @user_posts = Blog.joins(:user)
+    @user_posts = Blog.where(user_id: @user)
+
   end
 
   def new
@@ -13,6 +20,7 @@ class UsersController < ApplicationController
   	if @user.save
   		log_in @user
   		flash[:success]="Welcome to Bloggers App"
+
   		redirect_to @user
   	else
   		render 'new'

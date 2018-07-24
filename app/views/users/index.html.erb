@@ -1,0 +1,7 @@
+<h1>Bloggers List</h1>
+<%@users.each do |user| %>
+<ul>
+	<li><%= link_to("#{user.name}", '#') %></li>
+</ul>
+	
+	<% end %>

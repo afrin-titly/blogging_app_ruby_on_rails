@@ -4,11 +4,16 @@
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
+        Welcome to your profile, <%= @user.name %> </h1><br>
+       Date of birth: <%= @user.DOB %><br>
+        <%= @user.info %>
+      
       <br>
-      <%= link_to("Create new Post", "#")%><br>
+      <%= link_to("Create new Post", new_blog_path)%><br>
       <h1>All Blogs</h1>
+      <% @user_posts.each do |post|%>
+     <h4><li><%= link_to("#{post.title}", blog_path(post) ) %></li></h4>
+      <% end %>
     </section>
   </aside>
 </div>
