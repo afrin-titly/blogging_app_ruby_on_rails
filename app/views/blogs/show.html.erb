@@ -1,5 +1,11 @@
 <h2><%= @blog_id.title %></h2><br>
-<h5>Author name : <%= @user.name %></h5>
+<h5>Author name : 
 
-<br>
-<%= @blog_id.description %>
+	<% @user_posts.each do |post| %>
+		<% if(@blog_id.user_id == post.id)%>
+			<%= post.name %>
+		<%end%>
+	<% end %>
+
+<br><br>
+<p><%= @blog_id.description %></p>

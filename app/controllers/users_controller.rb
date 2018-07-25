@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     # @user_posts = Blog.joins(:user)
     @user_posts = Blog.where(user_id: @user)
+    @user_posts_plain=Blog.joins(:user).distinct
+
 
   end
 
@@ -27,8 +29,11 @@ class UsersController < ApplicationController
   	end
   end
 
+  
+
   private
   def user_params
   	params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
+

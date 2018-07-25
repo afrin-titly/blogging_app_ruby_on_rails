@@ -4,6 +4,7 @@
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
+        <% if logged_in? %>
         Welcome to your profile, <%= @user.name %> </h1><br>
        Date of birth: <%= @user.DOB %><br>
         <%= @user.info %>
@@ -12,8 +13,22 @@
       <%= link_to("Create new Post", new_blog_path)%><br>
       <h1>All Blogs</h1>
       <% @user_posts.each do |post|%>
-     <h4><li><%= link_to("#{post.title}", blog_path(post) ) %></li></h4>
+     <h4><li><%= link_to("#{post.title}", blog_path(post) ) %></li>  </h4>
+      <%= link_to("Edit", edit_blog_path(post) ) %>
+      <%= link_to("Delete", '#' ) %>
       <% end %>
+
+      <% else%>
+      Author name: <%=@user.name%>
+       <% @user_posts_plain.each do |post|%>
+       <% if(@user.id == post.user_id) %>
+
+        <h4><li><%= link_to("#{post.title}", blog_path(post) ) %></li></h4>
+       <%end%>
+     
+     <% end %>
+      <% end %>
+      
     </section>
   </aside>
 </div>
