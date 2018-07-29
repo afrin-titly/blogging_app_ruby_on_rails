@@ -2,7 +2,9 @@
 <% @blogs.each do |blog| %>
 
      <ul>
-         <h4><li> <%= link_to("#{blog.title}", blog_path(blog)) %> -- <%= (blog.user.name)%>
+         <h4><li> <%= link_to("#{blog.title}", blog_path(blog)) %>
+         	Created At: <%= blog.created_at %>
+         	Author: <%= (blog.user.name)%>
          	
          </li></h4>
      </ul>

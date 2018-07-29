@@ -25,7 +25,7 @@ class BlogsController < ApplicationController
   		flash[:seccess]="Post have been saved!!"
   		redirect_to user_path(@blog.user_id)
   	else
-  		flash[:danger]="Post couldn't saved"
+  		flash[:danger]="Post couldn't saved. Title/description can't be blank."
   		redirect_to user_path(@blog.user_id)
   	end
   end
@@ -43,6 +43,18 @@ class BlogsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def delete
+    @blog = Blog.find(params[:id])
+  end
+
+  def destroy
+    @blog=Blog.find(params[:id])
+    @blog.destroy
+    flash[:success] = "Post deleted"
+    # @blog.user_id = session[:user_id]
+    redirect_to user_path(@blog.user_id)
   end
 
 

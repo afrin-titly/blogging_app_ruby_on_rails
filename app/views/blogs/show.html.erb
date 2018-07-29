@@ -3,7 +3,7 @@
 
 	<% @user_posts.each do |post| %>
 		<% if(@blog_id.user_id == post.id)%>
-			<%= post.name %>
+			<%= post.name %> -- <%= post.created_at %>
 		<%end%>
 	<% end %>
 
